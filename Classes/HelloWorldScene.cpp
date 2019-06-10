@@ -27,6 +27,9 @@
 
 USING_NS_CC;
 
+int timer = 0;
+int x = 300;
+
 Scene* HelloWorld::createScene()
 {
     return HelloWorld::create();
@@ -101,21 +104,46 @@ bool HelloWorld::init()
         this->addChild(label, 1);
     }
 
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
-    if (sprite == nullptr)
-    {
-        problemLoading("'HelloWorld.png'");
-    }
-    else
-    {
-        // position the sprite on the center of the screen
-        sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+	/*Sprite*sprite = Sprite::create("green.png");
+	this->addChild(sprite);*/
 
-        // add the sprite as a child to this layer
-        this->addChild(sprite, 0);
-    }
+    // add "HelloWorld" splash screen"
+    //auto sprite = Sprite::create("HelloWorld.png");
+    //if (sprite == nullptr)
+    //{
+    //    problemLoading("'HelloWorld.png'");
+    //}
+    //else
+    //{
+    //    // position the sprite on the center of the screen
+    //    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+
+    //    // add the sprite as a child to this layer
+    //    this->addChild(sprite, 0);
+    //}
+	sprite = Sprite::create("HelloWorld.png");
+	this->addChild(sprite);
+	sprite->setPosition(Vec2(600.0f,400.0f));
+	//sprite->setScale(0.2f);
+	//sprite->setVisible(false);
+	this->scheduleUpdate();
     return true;
+}
+
+void HelloWorld::update(float delta) {
+	Vec2 pos = sprite->getPosition();
+	timer += 1;
+	//‰Eã‚ÉˆÚ“®‚·‚é
+	pos += Vec2(-1.0f, 0.0f);
+	
+	sprite->setPosition(pos);
+	/*switch (pos)
+	{
+	case 0:break;
+	case 1:break;
+	case 2:break;
+	case 3:break;
+	}*/
 }
 
 
